@@ -1,17 +1,39 @@
 import React from 'react';
+import ReactPaginate from 'react-paginate';
 
 module.exports = class Pagination extends React.PureComponent {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
     }
 
     render() {
+        const {totalPage, viewPage, currentPage, handlePageClick, additionalParameters, ...pros} = this.props;
+
         return (
             <div className="filter-list__pagination">
-                <ul>
-                    Here are Pagination.
-                </ul>
+                <nav aria-label="Page navigation" className="bt-pagination-nav">
+
+                    <ReactPaginate  pageCount={totalPage}
+                                    pageRangeDisplayed={viewPage}
+                                    marginPagesDisplayed={1}
+                                    onPageChange={handlePageClick}
+                                    forcePage={currentPage}
+                                    previousLabel={<span aria-hidden="true">&laquo;</span>}
+                                    nextLabel={<span aria-hidden="true">&raquo;</span>}
+                                    breakLabel={<span className="fill">...</span>}
+                                    breakClassName={"break-me"}
+                                    containerClassName = {"pagination pagination-sm"}
+                                    pageLinkClassName = {"page-link"}
+                                    activeClassName = {"active"}
+                                    previousLinkClassName = {"arrow page-link"}
+                                    nextLinkClassName = {"arrow page-link"}
+                                    disabledClassName = {"disabled-arrow"}
+                    />
+                </nav>
             </div>
-        );
+    );
     }
 };
+
+
+
