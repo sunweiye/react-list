@@ -14,6 +14,7 @@ module.exports = class ListContainer extends React.Component {
         this._initialState = {
             currentPage: 0,
             renderedDataList: this._dataList,
+            searchText: "",
             filters: {}
         };
 
@@ -53,20 +54,12 @@ module.exports = class ListContainer extends React.Component {
             delete filters[filter];
         }
 
-        subList = this._getFilteredSubList(filters);
-
-        this.setState({
-            currentPage: 0,
-            renderedDataList: subList,
-            filters: filters
-        });
-
-        this.props.onUpdate(subList.length);
+        this.search(this.state.searchText, filters);
     }
 
-    search(searchText) {
+    search(searchText, filters = null) {
         let subList = [],
-            filteredList = this._getFilteredSubList();
+            filteredList = this._getFilteredSubList(filters);
 
         if(searchText = searchText.trim().toLowerCase()) {
             filteredList.forEach(function (item) {
@@ -83,13 +76,16 @@ module.exports = class ListContainer extends React.Component {
 
         this.setState({
             currentPage: 0,
-            renderedDataList: subList
+            renderedDataList: subList,
+            searchText: searchText,
+            filters: filters === null ? this.state.filters : filters
         });
 
         this.props.onUpdate(subList.length);
     }
 
     reset() {
+        this._initialState.filters = {};
         this.setState(this._initialState);
         this.props.onUpdate(this._dataList.length);
     }
