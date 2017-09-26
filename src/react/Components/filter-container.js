@@ -45,14 +45,14 @@ module.exports = class FilterContainer extends React.Component {
         }
 
         return(
-            <div className="flex-list__filter-list">
             <div className="flex-list__filter-container container">
                 <div className="flex-list__filter-row row">
                     {searchBox}
                     {filterList}
+                </div>
+                <div className="flex-list__filter-info row">
                     {this.props.resultInformation}
                 </div>
-            </div>
             </div>
         );
     }

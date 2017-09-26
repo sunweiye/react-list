@@ -12,10 +12,11 @@ module.exports = class DataRow extends React.PureComponent {
             <a className="flex-list-item__more-info" title={name} href={url}>
             {linkText}
             </a>,
-            imageLink =
-                <a className="flex-list-item__image-link" title={name} href={url}>
+            imageLink = image ?
+                (<a className="flex-list-item__image-link" title={name} href={url}>
                     <img className="img-fluid" src={image} sizes="(min-width: 230px) 230px, 100vw" width="230" height="148" alt=""/>
-                </a>;
+                </a>) :
+                '';
 
         let optionsContent = [];
         for(let optionName in options) {
@@ -36,9 +37,7 @@ module.exports = class DataRow extends React.PureComponent {
                     <h3 className="flex-list-item__title">
                         <a title={name} href={url}>{name}</a>
                     </h3>
-                    <div className="flex-list-item__teaser">
-                        <p>{description}</p>
-                    </div>
+                    <div className="flex-list-item__teaser" dangerouslySetInnerHTML={{__html: description}} />
                     {itemLink}
                 </div>
                 <div className="col-12 col-md-3 filter-list-item__image">
