@@ -14,6 +14,13 @@ module.exports = class FlexList extends React.Component {
         this._resultsText = this.props.texts.resultsText;
         this._resetText = this.props.texts.resetText;
         this._resultNotFoundText = this.props.texts.resultNotFoundText;
+        this._paginationConfig = Object.assign(
+            {
+                "viewablePages": 5,
+                "pagesMargin": 2
+            },
+            this.props.paginationConfig
+        );
     }
 
     _getSubListByFilters() {
@@ -77,6 +84,7 @@ module.exports = class FlexList extends React.Component {
             <ListContainer
                 itemsPerPage = {this._itemsPerPage}
                 dataList = {this._dataList}
+                paginationConfig = {this._paginationConfig}
                 itemLinkText = {this._itemLinkText}
                 resultNotFoundText = {this._resultNotFoundText}
                 onUpdate = {this._handlerListInformationUpdate.bind(this)}

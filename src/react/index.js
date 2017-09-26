@@ -9,6 +9,7 @@ const renderReactFlexList = () => {
             searchBoxConfig = listParameters.search,
             filtersList = listParameters.filters,
             itemsPerPage = parseInt(listParameters.itemsPerPage),
+            paginationConfig = listParameters.pagination,
             listTexts = listParameters.texts,
             flexListContainer = element.getElementsByClassName("react-list-container")[0];
 
@@ -18,6 +19,7 @@ const renderReactFlexList = () => {
                 filtersList = {filtersList}
                 searchConfig = {searchBoxConfig}
                 itemsPerPage = {itemsPerPage}
+                paginationConfig = {paginationConfig}
                 texts = {listTexts}
             />,
             flexListContainer

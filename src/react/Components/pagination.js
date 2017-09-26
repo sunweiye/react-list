@@ -7,15 +7,15 @@ module.exports = class Pagination extends React.PureComponent {
     }
 
     render() {
-        const {totalPage, viewPage, currentPage, handlePageClick, additionalParameters, ...pros} = this.props;
+        const {totalPage, currentPage, viewablePages, pagesMargin, handlePageClick, additionalParameters, ...pros} = this.props;
 
         return (
             <div className="filter-list__pagination">
                 <nav aria-label="Page navigation" className="bt-pagination-nav">
 
                     <ReactPaginate  pageCount={totalPage}
-                                    pageRangeDisplayed={viewPage}
-                                    marginPagesDisplayed={1}
+                                    pageRangeDisplayed={viewablePages}
+                                    marginPagesDisplayed={pagesMargin}
                                     onPageChange={handlePageClick}
                                     forcePage={currentPage}
                                     previousLabel={<span aria-hidden="true">&laquo;</span>}

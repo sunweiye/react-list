@@ -10,6 +10,7 @@ module.exports = class ListContainer extends React.Component {
         this._itemsPerPage = this.props.itemsPerPage;
         this._itemLinkText = this.props.itemLinkText;
         this._resultNotFoundText = this.props.resultNotFoundText;
+        this._paginationConfig = this.props.paginationConfig;
 
         this._initialState = {
             currentPage: 0,
@@ -112,8 +113,9 @@ module.exports = class ListContainer extends React.Component {
         pagination =
             <Pagination
                 totalPage = {Math.ceil(renderedDataList.length / this._itemsPerPage)}
-                viewPage = {currentPage}
                 currentPage = {currentPage}
+                viewablePages = {this._paginationConfig.viewablePages}
+                pagesMargin = {this._paginationConfig.pagesMargin}
                 handlePageClick = {this._handlePageClick.bind(this)}
             />;
 
